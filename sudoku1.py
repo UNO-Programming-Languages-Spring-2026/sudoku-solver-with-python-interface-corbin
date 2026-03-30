@@ -4,7 +4,7 @@ class ClingoApp(clingo.application.Application):
         for f in files:
             ctl.load(f)
         if not files:
-            ctl.load("-")
-            ctl.ground()
-            ctl.solve()
+            ctl.load("sudoku.lp")
+        ctl.ground()
+        ctl.solve()
 clingo.application.clingo_main(ClingoApp())
