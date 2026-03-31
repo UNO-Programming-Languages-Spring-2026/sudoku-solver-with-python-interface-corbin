@@ -1,4 +1,5 @@
 import sys, clingo
+
 class ClingoApp(clingo.application.Application):
     def main(self, ctl, files):
         ctl.load("sudoku.lp")
