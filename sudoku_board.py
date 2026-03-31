@@ -23,12 +23,12 @@ class Sudoku:
         clingo_output=clingo_output.split(" ")
         for atom in clingo_output:
             if atom[0] == "[":
-                int(row)=atom[8]
-                int(cols)=atom[10]
-                int(value)=atom[12]
+                row=int(atom[8])
+                cols=int(atom[10])
+                value=int(atom[12])
             else:    
-                int(row)=atom[7]
-                int(cols)=atom[9]
-                int(value)=atom[11]
+                row=int(atom[7])
+                cols=int(atom[9])
+                value=int(atom[11])
             sudoku[(row,cols)]=value
         return cls(sudoku)
