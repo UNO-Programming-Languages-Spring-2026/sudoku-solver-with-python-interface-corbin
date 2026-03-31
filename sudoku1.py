@@ -8,4 +8,8 @@ class ClingoApp(clingo.application.Application):
             ctl.load("-")
         ctl.ground()
         ctl.solve()
+    def print_model(self, model, printer) -> None:
+        symbols = sorted(model.symbols(shown=True))
+        print(" ".join(str(s) for s in symbols))
+        sys.stdout.flush()
 clingo.application.clingo_main(ClingoApp())
