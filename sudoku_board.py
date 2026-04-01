@@ -7,20 +7,19 @@ class Sudoku:
 
     def __str__(self) -> str:
         s = ""
-        sudoku=self.from_model()
-        for position,value in sudoku.items():
-            value_format=''
-            match position:
-                #adds two spaces to the end of the value
-                case position if position[0]==3 or position[0]==6:
-                    value_format=f'{value}  '
-                #adds a newline if cols is 9
-                case position if position[0]==9:
-                    value_format=f'{value}\n'
-                #default adds one space after value
-                case _:
-                    value_format=f'{value} '
-            s=+(f"{value_format}")
+        for row in range(1,10):
+            for cols in range(1,10):
+                if cols == 3 or cols == 6:
+                    value_to_add=f'{self.sudoku[(row,cols)]}  '
+                elif cols == 1 and (row != 1 and row !=4 and row != 7):
+                    value_to_add=f'\n{self.sudoku[(row,cols)]} '
+                elif cols == 1 and (row != 1 and (row == 4 or row == 7)):
+                    value_to_add=f'\n\n{self.sudoku[(row,cols)]} '
+                elif cols == 9:
+                    value_to_add=f'{self.sudoku[(row,cols)]}'
+                else:
+                    value_to_add=f'{self.sudoku[(row,cols)]} '
+                s += value_to_add
         return s
 
     @classmethod
